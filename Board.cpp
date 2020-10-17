@@ -12,11 +12,11 @@ void Board::print() const
     }
 }
 
-void Board::put(Player *player, Coordinates &coordinates)
+void Board::put(const Player &player, const Coordinates &coordinates)
 {
     if(canPut(coordinates))
     {
-        board[coordinates.x][coordinates.y] = player->getSymbol();
+        board[coordinates.x][coordinates.y] = player.getSymbol();
         moveHistory.push(std::make_pair(player, coordinates));
     }
 }
@@ -45,11 +45,11 @@ bool Board::filled() const
 
 void Board::printMoveHistory()
 {
-    std::pair<Player *, Coordinates> move;
+    std::pair<Player, Coordinates> move;
     while(!moveHistory.empty())
     {
         move = moveHistory.front();
         moveHistory.pop();
-        std::cout<<"Symbol: "<<move.first->getSymbol()<<" Coordinates: "<<move.second.x<<","<<move.second.y<<std::endl;
+        std::cout<<"Symbol: "<<move.first.getSymbol()<<" Coordinates: "<<move.second.x<<","<<move.second.y<<std::endl;
     }
 }

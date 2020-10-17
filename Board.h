@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include <iostream>
+#include <memory>
 #include <vector>
 #include <queue>
 
@@ -17,11 +18,11 @@ private:
     std::vector<std::vector<char>> board = { {'-', '-', '-'},
                                              {'-', '-', '-'},
                                              {'-', '-', '-'} };
-    std::queue<std::pair<Player *, Coordinates>> moveHistory;
+    std::queue<std::pair<Player , Coordinates>> moveHistory;
 public:
     void print() const;
     bool canPut(const Coordinates &coordinates) const;
-    void put(Player *player, Coordinates &coordinates);
+    void put(const Player &player, const Coordinates &coordinates);
     std::vector<std::vector<char>> get() const;
     bool filled() const;
     void printMoveHistory();
