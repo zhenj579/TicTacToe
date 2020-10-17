@@ -4,7 +4,7 @@
 
 #include "test.h"
 
-Player *test::tictactoeWinAlgo(Board board, Player *player1, Player *player2) const
+std::shared_ptr<Player> test::tictactoeWinAlgo(Board board, std::shared_ptr<Player> player1, std::shared_ptr<Player> player2) const
 {
         char winningSymbol;
         if(board.get()[0][0] != '-' and board.get()[0][0] == board.get()[1][1] and board.get()[1][1] == board.get()[2][2]) // diagonal
@@ -39,7 +39,7 @@ Player *test::tictactoeWinAlgo(Board board, Player *player1, Player *player2) co
 
 test::test()
 {
-    Player *p1 = new Player();
+    std::shared_ptr<Player> p1;
     p1->setSymbol('O');
     Coordinates c;
 
@@ -47,15 +47,15 @@ test::test()
 
     c.x = 0;
     c.y = 0;
-    b1.put(p1, c);
+    b1.put(*p1, c);
 
     c.x = 1;
     c.y = 1;
-    b1.put(p1, c);
+    b1.put(*p1, c);
 
     c.x = 2;
     c.y = 2;
-    b1.put(p1, c);
+    b1.put(*p1, c);
 
     b1.print();
     assert(tictactoeWinAlgo(b1,p1) == p1);
@@ -66,15 +66,15 @@ test::test()
 
     c.x = 0;
     c.y = 2;
-    b2.put(p1, c);
+    b2.put(*p1, c);
 
     c.x = 1;
     c.y = 1;
-    b2.put(p1, c);
+    b2.put(*p1, c);
 
     c.x = 2;
     c.y = 0;
-    b2.put(p1, c);
+    b2.put(*p1, c);
 
     b2.print();
     assert(tictactoeWinAlgo(b2,p1) == p1);
@@ -85,15 +85,15 @@ test::test()
 
     c.x = 0;
     c.y = 0;
-    b3.put(p1, c);
+    b3.put(*p1, c);
 
     c.x = 0;
     c.y = 1;
-    b3.put(p1, c);
+    b3.put(*p1, c);
 
     c.x = 0;
     c.y = 2;
-    b3.put(p1, c);
+    b3.put(*p1, c);
 
     b3.print();
     assert(tictactoeWinAlgo(b3,p1) == p1);
@@ -104,15 +104,15 @@ test::test()
 
     c.x = 1;
     c.y = 0;
-    b4.put(p1, c);
+    b4.put(*p1, c);
 
     c.x = 1;
     c.y = 1;
-    b4.put(p1, c);
+    b4.put(*p1, c);
 
     c.x = 1;
     c.y = 2;
-    b4.put(p1, c);
+    b4.put(*p1, c);
 
     b4.print();
     assert(tictactoeWinAlgo(b4,p1) == p1);
@@ -123,15 +123,15 @@ test::test()
 
     c.x = 2;
     c.y = 0;
-    b5.put(p1, c);
+    b5.put(*p1, c);
 
     c.x = 2;
     c.y = 1;
-    b5.put(p1, c);
+    b5.put(*p1, c);
 
     c.x = 2;
     c.y = 2;
-    b5.put(p1, c);
+    b5.put(*p1, c);
 
     b5.print();
     assert(tictactoeWinAlgo(b5,p1) == p1);
@@ -142,15 +142,15 @@ test::test()
 
     c.x = 0;
     c.y = 0;
-    b6.put(p1, c);
+    b6.put(*p1, c);
 
     c.x = 1;
     c.y = 0;
-    b6.put(p1, c);
+    b6.put(*p1, c);
 
     c.x = 2;
     c.y = 0;
-    b6.put(p1, c);
+    b6.put(*p1, c);
 
     b6.print();
     assert(tictactoeWinAlgo(b6,p1) == p1);
@@ -159,15 +159,15 @@ test::test()
 
     c.x = 0;
     c.y = 1;
-    b7.put(p1, c);
+    b7.put(*p1, c);
 
     c.x = 1;
     c.y = 1;
-    b7.put(p1, c);
+    b7.put(*p1, c);
 
     c.x = 2;
     c.y = 1;
-    b7.put(p1, c);
+    b7.put(*p1, c);
 
     b7.print();
     assert(tictactoeWinAlgo(b7,p1) == p1);
@@ -177,15 +177,15 @@ test::test()
 
     c.x = 0;
     c.y = 2;
-    b8.put(p1, c);
+    b8.put(*p1, c);
 
     c.x = 1;
     c.y = 2;
-    b8.put(p1, c);
+    b8.put(*p1, c);
 
     c.x = 2;
     c.y = 2;
-    b8.put(p1, c);
+    b8.put(*p1, c);
 
     b8.print();
     assert(tictactoeWinAlgo(b8,p1) == p1);

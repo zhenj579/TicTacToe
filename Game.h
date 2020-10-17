@@ -7,12 +7,12 @@
 class Game {
 private:
     Board board;
-    Player *player1;
-    Player *player2;
+    std::shared_ptr<Player> player1;
+    std::shared_ptr<Player> player2;
 public:
     Game();
     void start();
-    Player *findWinner() const;
+    std::shared_ptr<Player> findWinner() const;
 };
 
 

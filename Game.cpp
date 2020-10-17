@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <cassert>
 
-Game::Game() : player1(new Player()), player2(new Player()) { }
+Game::Game() : player1(std::make_shared<Player>()), player2(std::make_shared<Player>()){ }
 void Game::start()
 {
     std::cout<<"starting game!"<<std::endl;
@@ -15,7 +15,7 @@ void Game::start()
     std::cout<<"Player 2, you are: "<<player2Symbol<<std::endl;
     player2->setSymbol(player2Symbol);
     int counter = 1; // 1 = player 1's move, 2 = player 2's move
-    Player *winner = nullptr;
+    std::shared_ptr<Player> winner = nullptr;
     while(winner == nullptr && !board.filled())
     {
         board.print();
@@ -31,7 +31,7 @@ void Game::start()
         {
             if(board.canPut(coord))
             {
-                board.put(player1, coord);
+                board.put(*player1, coord);
                 winner = findWinner();
                 counter++;
             }
@@ -44,7 +44,7 @@ void Game::start()
         {
             if(board.canPut(coord))
             {
-                board.put(player2, coord);
+                board.put(*player2, coord);
                 winner = findWinner();
                 counter--;
             }
@@ -61,7 +61,7 @@ void Game::start()
     board.printMoveHistory();
 }
 
-Player* Game::findWinner() const
+std::shared_ptr<Player> Game::findWinner() const
 {
     char winningSymbol;
     if(board.get()[0][0] != '-' and board.get()[0][0] == board.get()[1][1] and board.get()[1][1] == board.get()[2][2]) // diagonal

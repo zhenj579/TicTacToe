@@ -11,7 +11,7 @@
 struct test
 {
     test();
-    Player *tictactoeWinAlgo(Board b, Player *player1, Player *player2 = nullptr) const;
+    std::shared_ptr<Player> tictactoeWinAlgo(Board b, std::shared_ptr<Player> player1, std::shared_ptr<Player> player2 = nullptr) const;
 };
 
 
